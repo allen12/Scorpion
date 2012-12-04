@@ -1,9 +1,8 @@
-package edu.wpi.first.wpilibj.templates;
+package org.usfirst.frc178;
 
 import edu.wpi.first.wpilibj.*;
 
-public class Drivetrain
-{
+public class Drivetrain {
 	private Victor frontLeft, frontRight, rearLeft, rearRight;
 
 	private Joystick joystick;
@@ -11,8 +10,7 @@ public class Drivetrain
 
 	double robotX, robotY, robotZ, speed;
 
-	public Drivetrain(int frontLeftN, int frontRightN, int rearLeftN, int rearRightN, Joystick joystick, final double speed, Joystick joystickKiddy)
-	{
+	public Drivetrain(int frontLeftN, int frontRightN, int rearLeftN, int rearRightN, Joystick joystick, final double speed, Joystick joystickKiddy) {
 		frontLeft = new Victor(frontLeftN)
 		{
 			public void set(double d)
@@ -46,7 +44,10 @@ public class Drivetrain
 		this.joystickKiddy = joystickKiddy;
 	}
 
-	public double getFrontLeft() //Gets the front left motor speed
+	/**
+	 * Gets the front left motor speed
+	 */
+	public double getFrontLeft()
 	{
 		return this.frontLeft.get();
 	}
@@ -68,19 +69,17 @@ public class Drivetrain
 
 	public void drive() //Drives the robot
 	{
-		/*if (joystick.getTrigger()) {
-			robotX = -joystick.getX();
-			robotY = -joystick.getY();
-			robotZ = 0;
-			speed = 1.0;
-		} else {
-			*/
+		if (joystick.getTrigger()) {
 			robotX = -joystick.getX();
 			robotY = -joystick.getY();
 			robotZ = -joystick.getTwist();
-			//speed = 0.5;
-			speed = 1.0;
-		//}
+			speed = 0.7;
+		} else {
+			robotX = -joystickKiddy.getX();
+			robotY = -joystickKiddy.getY();
+			robotZ = -joystickKiddy.getTwist();
+			speed = 0.35;
+		}
 
 		if (joystick.getRawButton(2)) {
 			speed = speed / 2;

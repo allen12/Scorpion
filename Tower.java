@@ -1,5 +1,5 @@
-package edu.wpi.first.wpilibj.templates;
-//Imports
+package org.usfirst.frc178;
+
 import edu.wpi.first.wpilibj.*;
 
 public class Tower {
@@ -157,7 +157,10 @@ public class Tower {
 		}*/
 
 		//setShooterSpeed(enhancedIO.getSlider());
-		setShooterSpeed(1.0);
+
+		// COMP --> setShooterSpeed(0.28);
+
+		setShooterSpeed(0.40); //.38
 		setShooterMotors(shooterSpeed);
 	}
 
@@ -258,6 +261,6 @@ public class Tower {
 			}
 		}
 
-		//System.out.println(shooterSpeed);
+		System.out.println(shooterSpeed);
 	}
 }
